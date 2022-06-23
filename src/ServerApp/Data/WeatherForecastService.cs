@@ -16,7 +16,7 @@ public class WeatherForecastService
             Summary = Summaries[Random.Shared.Next(Summaries.Length)]
         });
         
-        return Task.FromResult(skip.HasValue ? weatherForecasts.Skip(skip.Value).Take(take.Value) : weatherForecasts);
+        return Task.FromResult(skip.HasValue && take.HasValue ? weatherForecasts.Skip(skip.Value).Take(take.Value) : weatherForecasts);
     }
 
     public Task<int> GetForecastCountAsync() => Task.FromResult(50);

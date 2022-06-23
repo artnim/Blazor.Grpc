@@ -2,12 +2,14 @@
 
 <PageTitle>Weather forecast</PageTitle>
 
+@using WeatherForecast.Grpc.V1
+
 <h1>Weather forecast</h1>
 
-<p>This component demonstrates fetching data from the server.</p>
+<p>This component demonstrates fetching data from a service.</p>
 
 <RadzenCard>
-        <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@count" TItem="WeatherForecast" Data="@forecasts" LoadData="@LoadData" AllowPaging="true" PageSize="10">
+        <RadzenDataGrid @ref="_grid" IsLoading="@_isLoading" Count="@_count" TItem="WeatherForecast" Data="@_forecasts" LoadData="@LoadData" AllowPaging="true" PageSize="10">
             <Columns>
                 <RadzenDataGridColumn TItem="WeatherForecast" Title="Date" Property="@nameof(WeatherForecast.Date)"/>
                 <RadzenDataGridColumn TItem="WeatherForecast" Title="Temperature C" Property="@nameof(WeatherForecast.TemperatureC)"/>

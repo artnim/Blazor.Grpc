@@ -9,35 +9,35 @@ namespace ServerApp.Pages;
 
 public partial class FetchData : ComponentBase
 {
-    private RadzenDataGrid<WeatherForecast.Grpc.V1.WeatherForecast> grid;
-    private IList<WeatherForecast.Grpc.V1.WeatherForecast> forecasts;
+    private RadzenDataGrid<WeatherForecast.Grpc.V1.WeatherForecast>? _grid;
+    private IList<WeatherForecast.Grpc.V1.WeatherForecast>? _forecasts;
     [Inject]
     private WeatherForecastService.WeatherForecastServiceClient WeatherForecastServiceClient { get; set; } = null!;
 
-    private bool isLoading = false;
 
-    private int count;
+    private bool _isLoading;
+    private int _count;
 
-    protected async Task LoadData(LoadDataArgs args)
+    private async Task LoadData(LoadDataArgs args)
     {
-        isLoading = true;
+        _isLoading = true;
 
         await Task.Yield();
 
-        count = (await WeatherForecastServiceClient
+        _count = (await WeatherForecastServiceClient
             .GetForecastCountAsync(new WeatherForecastRequest { Date = DateTimeOffset.Now.ToTimestamp() })
             .ResponseAsync).Count;
 
         using var call = WeatherForecastServiceClient.GetForecast(new WeatherForecastRequest
             { Date = DateTimeOffset.Now.ToTimestamp(), Skip = args.Skip, Top = args.Top });
 
-        forecasts = new List<WeatherForecast.Grpc.V1.WeatherForecast>();
+        _forecasts = new List<WeatherForecast.Grpc.V1.WeatherForecast>();
 
         await foreach (var forecast in call.ResponseStream.ReadAllAsync())
         {
-            forecasts.Add(forecast);
+            _forecasts.Add(forecast);
         }
 
-        isLoading = false;
+        _isLoading = false;
     }
 }
