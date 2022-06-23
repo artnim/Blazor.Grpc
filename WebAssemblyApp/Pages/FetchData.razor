@@ -1,0 +1,18 @@
+﻿@page "/fetchdata"
+
+<PageTitle>Weather forecast</PageTitle>
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<RadzenCard>
+        <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@count" TItem="WeatherForecast" Data="@forecasts" LoadData="@LoadData" AllowPaging="true" PageSize="10">
+            <Columns>
+                <RadzenDataGridColumn TItem="WeatherForecast" Title="Date" Property="@nameof(WeatherForecast.Date)"/>
+                <RadzenDataGridColumn TItem="WeatherForecast" Title="Temperature C" Property="@nameof(WeatherForecast.TemperatureC)"/>
+                <RadzenDataGridColumn TItem="WeatherForecast" Title="Temperature F" Property="@nameof(WeatherForecast.TemperatureF)"/>
+                <RadzenDataGridColumn TItem="WeatherForecast" Title="Summary" Property="@nameof(WeatherForecast.Summary)"/>
+            </Columns>
+        </RadzenDataGrid>
+</RadzenCard>

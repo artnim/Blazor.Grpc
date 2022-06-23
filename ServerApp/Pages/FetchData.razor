@@ -1,0 +1,20 @@
+﻿@page "/fetchdata"
+
+<PageTitle>Weather forecast</PageTitle>
+
+@using WeatherForecast.Grpc.V1
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+<RadzenCard>
+        <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@count" TItem="WeatherForecast" Data="@forecasts" LoadData="@LoadData" AllowPaging="true" PageSize="10">
+            <Columns>
+                <RadzenDataGridColumn TItem="WeatherForecast" Title="Date" Property="@nameof(WeatherForecast.Date)"/>
+                <RadzenDataGridColumn TItem="WeatherForecast" Title="Temperature C" Property="@nameof(WeatherForecast.TemperatureC)"/>
+                <RadzenDataGridColumn TItem="WeatherForecast" Title="Temperature F" Property="@nameof(WeatherForecast.TemperatureF)"/>
+                <RadzenDataGridColumn TItem="WeatherForecast" Title="Summary" Property="@nameof(WeatherForecast.Summary)"/>
+            </Columns>
+        </RadzenDataGrid>
+</RadzenCard>

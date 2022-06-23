@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Radzen.Blazor" Version="3.18.16" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\WeatherForecast.Grpc\WeatherForecast.Grpc.csproj" />
+    </ItemGroup>
+
+</Project>

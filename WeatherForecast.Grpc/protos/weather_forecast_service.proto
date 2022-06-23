@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "weather_forecast.proto";
+import "weather_forecast_request.proto";
+import "weather_forecast_count.proto";
+
+package WeatherForecast.Grpc.V1;
+
+service WeatherForecastService {
+  rpc GetForecast(WeatherForecastRequest) returns (stream WeatherForecast);
+  rpc GetForecastCount(WeatherForecastRequest) returns (WeatherForecastCount);
+}

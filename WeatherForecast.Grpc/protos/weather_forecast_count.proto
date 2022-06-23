@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package WeatherForecast.Grpc.V1;
+
+message WeatherForecastCount {
+  int32 count = 1;
+}

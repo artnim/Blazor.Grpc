@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+package WeatherForecast.Grpc.V1;
+
+message WeatherForecastRequest {
+  google.protobuf.Timestamp date = 1;
+  google.protobuf.Int32Value skip = 2;
+  google.protobuf.Int32Value top = 3;
+}
